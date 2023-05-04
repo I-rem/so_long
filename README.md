@@ -172,3 +172,6 @@ Execute the following tests, if at least one fails...
   - There is some sprite animation
   - You need to explain what it is and how you did it
 - The counter of movement is rendered on the screen using texture or mlx_put_string
+
+## MiniLibX Guide
+https://qst0.github.io/ft_libgfx/man_mlx.html
