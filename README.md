@@ -11,8 +11,37 @@ and deal with keyboard and mouse events.
 
 ## Mandatory Part
 
-### Game
+**Program**: name so_long
 
+**Turn in files:** Makefile, *.h, *.c, maps, textures
+
+**Makefile:** `NAME`, `all`, `clean`, `fclean`, `re`
+
+**Arguments**: A map in format *.ber
+
+**External functs:** 
+
+- `open`, `close`, `read`, `write`, `malloc`, `free`, `perror`, `strerror`, `exit`
+- All functions of the math library (-lm compiler option,
+strerror, exit
+man man 3 math)
+- All functions of the MiniLibX
+- `ft_printf` and any equivalent YOU coded
+
+**Libft authorized:** Yes
+
+**Description:** You must create a basic 2D game in which a dolphin escapes Earth after eating some fish. Instead of a dolphin, fish, and the Earth, you can use any
+character, any collectible and any place you want.
+
+Your project must comply with the following rules:
+- You must use the MiniLibX. Either the version available on the school machines,
+or installing it using its sources.
+- You have to turn in a Makefile which will compile your source files. It must not
+relink.
+- Your program has to take as parameter a map description file ending with the .ber
+extension.
+
+### Game
 - The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route.
 - The W, A, S, and D keys must be used to move the main character. (If you prefer, you can use ZQSD or the arrow keys on your keyboard to
