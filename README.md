@@ -165,3 +165,10 @@ Execute the following tests, if at least one fails...
 
 #### Image usage
 - The program use mlx\_put\_image\_to\_window and not mlx put pixel
+
+### Bonus
+- Enemy patrols that cause the player to lose in case of contact
+- Draw calls
+  - There is some sprite animation
+  - You need to explain what it is and how you did it
+- The counter of movement is rendered on the screen using texture or mlx_put_string
