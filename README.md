@@ -9,7 +9,7 @@ You are going to use the school graphical library: the MiniLibX!
 This library was developed internally and includes basic necessary tools to open a window, create images
 and deal with keyboard and mouse events.
 
-## Mandatory Part
+### Mandatory Part
 
 **Program**: name so_long
 
@@ -41,7 +41,7 @@ relink.
 - Your program has to take as parameter a map description file ending with the .ber
 extension.
 
-### Game
+#### Game
 - The player’s goal is to collect every collectible present on the map, then escape
 chosing the shortest possible route.
 - The W, A, S, and D keys must be used to move the main character. (If you prefer, you can use ZQSD or the arrow keys on your keyboard to
@@ -52,7 +52,7 @@ move your main character.)
 - You have to use a 2D view (top-down or profile).
 - The game doesn’t have to be real time.
 
-### Graphic Management
+#### Graphic Management
 - Your program has to display the image in a window.
 - The management of your window must remain smooth (changing to another window, minimizing, and so forth).
 - Pressing **ESC** must close the window and quit the program in a clean way.
@@ -60,7 +60,7 @@ move your main character.)
 program in a clean way.
 - The use of the **images** of the MiniLibX is **mandatory**.
 
-### Map
+#### Map
 - The map has to be constructed with 3 components: walls, collectibles, and free
 space.
 - The map can be composed of only these 5 characters:
@@ -106,7 +106,7 @@ an error.
 exit in a clean way, and return **"Error\n"** followed by an explicit error message of
 your choice.
 
-## Bonus Part
+### Bonus Part
 You are allowed to use other functions to complete the bonus part as long as their
 use is **justified** during your evaluation
 
@@ -114,3 +114,54 @@ You will get extra points if you:
 - Make the player lose when they touch an enemy patrol.
 - Add some sprite animation.
 - Display the movement count directly on screen instead of writing it in the shell.
+
+## Evaluation
+
+### Mandatory part
+
+#### Executable name
+- Compilation wihout re-link
+- Executable name is **so_long**
+
+#### Map reading
+- Use different maps
+- Test with different line sizes
+- Program returns an error and exits properly when the configuration file is misconfigured (unknown key, double key, invalid path etc)
+
+If not defense is over.
+
+#### Technical elements of the display
+
+Check that the level is a valid represntation of the map used as parameter.
+- A window must open at the launch of the program. It must stay open during whole execution
+- Hide all or part of the window either by using another window or by using the screen's borders, then minimize the windows and maximize it back. In all cases the content of the window must remain consistent.
+
+#### User basic events
+
+Execute the following 3 tests. If at least one fails, no points will be awarded for this section. Move on to the next one.
+
+- Click the red cross at the top left of the window. THe window must close and the program must exit cleanly.
+- Press **ESC** key. The window must close and the program must exit cleanly. (Another key can exit the program too, like Q)
+- Press the four arrow keys in the order of your liking.
+
+#### Movements
+
+Execute the 5 following tests. If at least one fails, no points will be awrded for this section.
+- The player's spawning position must be in accordance with the map file.
+- Press the arrow keys to move in every direction on the map
+- Is the game "playable"?
+
+#### Walls & Sprites
+
+Execute the following tests, if at least one fails...
+
+- The wall's texture is well placed and the player can not go through it.
+- The collectible's texture is well placed and the player can pick it by walking on it.
+- The Exit texture is well placed and the player can finish the game by walking on it but only after picking every collectible.
+- The player texture is well placed and can move in every direction except into the walls.
+
+#### Counter
+- There is a small counter displayed on the shell that counts how many movements the player did.
+
+#### Image usage
+- The program use mlx\_put\_image\_to\_window and not mlx put pixel
