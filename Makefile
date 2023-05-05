@@ -2,7 +2,8 @@ NAME        := so_long
 CC        := gcc
 FLAGS    := -Wall -Wextra -Werror 
 
-SRCS        := so_long.c                          
+SRCS        :=      so_long.c \
+                          
 OBJS        := $(SRCS:.c=.o)
 
 .c.o:
@@ -10,18 +11,23 @@ OBJS        := $(SRCS:.c=.o)
 
 RM		    := rm -f
 
-${NAME}:	${OBJS}
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+$(NAME): ${OBJS}
+			
+			@ $(MAKE) -C mlx all >/dev/null 2>&1
+			@ cp ./mlx/libmlx.a .
+			$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
+
 
 all:		${NAME}
 
-bonus:		all
-
 clean:
-			@ ${RM} *.o
+			 ${RM} *.o */*.o */*/*.o
+			 rm -rf $(NAME).dSYM >/dev/null 2>&1
+
 
 fclean:		clean
-			@ ${RM} ${NAME}
+			 ${RM} ${NAME}
+			 rm libmlx.a
 
 re:			fclean all
 
