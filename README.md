@@ -115,7 +115,7 @@ You will get extra points if you:
 - Add some sprite animation.
 - Display the movement count directly on screen instead of writing it in the shell.
 
-## Evaluation
+## Evaluation
 
 ### Mandatory part
 
