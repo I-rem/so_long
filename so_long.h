@@ -20,4 +20,9 @@
 # include <fcntl.h>
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}	t_data;
 #endif
