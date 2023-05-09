@@ -1,9 +1,9 @@
 NAME        := so_long
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
+FLAGS    := -Wall -Wextra -Werror
 
-SRCS        :=      so_long.c \
-                          
+SRCS        :=      so_long.c get_next_line.c get_next_line_utils.c windows_hooks.c
+
 OBJS        := $(SRCS:.c=.o)
 
 .c.o:
@@ -15,7 +15,7 @@ $(NAME): ${OBJS}
 			
 			@ $(MAKE) -C mlx all >/dev/null 2>&1
 			@ cp ./mlx/libmlx.a .
-			$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -lm -framework OpenGL -framework AppKit
+			$(CC) $(CFLAGS) -g3 -Ofast -o $(NAME) -Imlx $(OBJS) -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 
 all:		${NAME}

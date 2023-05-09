@@ -6,46 +6,20 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/05 13:30:44 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:26:40 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Need to take a map description file endsing with the .ber extension
-// How to includeminilibx wşthout norminette causing problems?
-
 #include "so_long.h"
-
-int	handle_no_event(void *data)
-{
-	/* This function needs to exist, but it is useless for the moment */
-	return (0);
-}
-
-int	handle_input(int keysym, t_data *data)
-{
-	if (keysym == XK_Escape)
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	return (0);
-}
-
-int	ft_strlen(char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	len--;
-	return (len);
-}
 
 void	arg_check(int argc, char *argv[])
 {
 	int	len;
-	
+
 	if (argc == 2)
 	{
 		len = ft_strlen(argv[1]);
+		len--;
 		if (argv[1][len] == 'r')
 		{
 			len--;
@@ -67,33 +41,47 @@ void	arg_check(int argc, char *argv[])
 	exit(EXIT_FAILURE);
 }
 
-void	*open_window(void *mlx_ptr)
+void	map_check(char *mapfile)
 {
-	return (mlx_new_window(mlx_ptr, 500, 500, "My Game"));
+	int		fd;
+	char	*path;
+	char	*map[100];
+	int		i;
+
+	path = ft_strjoin("maps/", mapfile);
+	fd = open(path, O_RDONLY);
+	free(path);
+	if (fd < 0)
+	{
+		close(fd);
+		write(2, "Error\nInvalid file", 18);
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	map[i] = get_next_line(fd);
+	while (map[i])
+	{
+		i++;
+		map[i] = get_next_line(fd);
+	}
 }
 
 int	main(int argc, char *argv[])
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
 	t_data	data;
-	
+
 	arg_check(argc, argv);
+	map_check(argv[1]);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
-		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-			"My Game");
+		return (2);
+	data.win_ptr = open_window(data.mlx_ptr);
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
-		return (MLX_ERROR);
+		return (2);
 	}
-	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_key_hook(data.win_ptr, &handle_input, &data);
-	
-	mlx_loop(mlx_ptr);
-	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-	mlx_destroy_display(data.mlx_ptr);
-	free(data.mlx_ptr);
+	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
+	mlx_loop(data.mlx_ptr);
 }
