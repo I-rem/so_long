@@ -1,6 +1,6 @@
 # so_long
 This project is a very small 2D game made for 42 coding school
-
+Assets: https://0x72.itch.io/16x16-dungeon-tileset
 ## Objectives
 
 It’s time for you to create a basic computer graphics project!
