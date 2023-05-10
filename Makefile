@@ -2,7 +2,7 @@ NAME        := so_long
 CC        := gcc
 FLAGS    := -Wall -Wextra -Werror
 
-SRCS        :=      so_long.c get_next_line.c get_next_line_utils.c windows_hooks.c
+SRCS        :=      so_long.c get_next_line.c get_next_line_utils.c windows_hooks.c map_utils.c ft_printf.c
 
 OBJS        := $(SRCS:.c=.o)
 

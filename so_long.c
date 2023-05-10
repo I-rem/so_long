@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/09 15:26:40 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:01:18 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	arg_check(int argc, char *argv[])
 
 void	map_check(char *mapfile)
 {
-	int		fd;
-	char	*path;
-	char	*map[100];
-	int		i;
+	int					fd;
+	char				*path;
+	struct s_map_data	map_data;
+	int					i;
 
 	path = ft_strjoin("maps/", mapfile);
 	fd = open(path, O_RDONLY);
@@ -58,12 +58,29 @@ void	map_check(char *mapfile)
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
-	map[i] = get_next_line(fd);
-	while (map[i])
+	map_data.map[i] = get_next_line(fd);
+	while (map_data.map[i])
 	{
 		i++;
-		map[i] = get_next_line(fd);
+		map_data.map[i] = get_next_line(fd);
 	}
+	close(fd);
+	rectangle_check (map_data);
+	border_check (map_data);
+}
+
+void	invalid_map(struct s_map_data map_data)
+{
+	int	i;
+
+	i = 0;
+	while (map_data.map[i])
+	{
+		free(map_data.map[i]);
+		i++;
+	}
+	write(2, "Error\nInvalid map", 17);
+	exit (EXIT_FAILURE);
 }
 
 int	main(int argc, char *argv[])
