@@ -6,15 +6,21 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:12:06 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/09 15:05:38 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:09:27 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	handle_no_event(void *data)
+int	handle_no_event(t_data *data)
 {
-	(void)data;
+	/*void	*img;
+	int w = 5;
+	int h = 5;
+	img = mlx_xpm_file_to_image(data->mlx_ptr, "texture/hero_basic.xpm", &w, &h);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, 0, 0);
+	write(2, "test", 4);*/
+	(void) data;
 	return (0);
 }
 
@@ -25,6 +31,7 @@ int	handle_input(int keycode, t_data *data)
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(EXIT_SUCCESS);
 	}
+//	if (keycode == W)
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:57:59 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/10 13:02:10 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:51:00 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,56 @@
 # include <stdarg.h>
 # define WINDOW_WIDTH 500
 # define WINDOW_HEIGHT 500
+# define COIN "textures/chest_golden_open_full.xpm"
+# define EXIT "textures/door_closed.xpm"
+# define PLAYER "textures/hero_basic.xpm"
+# define FLOOR "texture/Edge_single.xpm"
+# define WALL "textures/Wall_front.xpm"
 # define ESC 53
 # define W 13
 # define A 0
 # define S 1
 # define D 2
 
-typedef struct s_data
+typedef struct s_img
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_data;
+	void	*img_ptr;
+	int		x;
+	int		y;
+}	t_img;
 struct s_map_data
 {
 	int		rows;
 	int		collumns;
 	int		c_count;
+	int		e_count;
+	int		p_count;
+	int		p_position_x;
+	int		p_position_y;
 	char	*map[100];
 };
+typedef struct s_data
+{
+	struct s_map_data	map_data;
+	void				*mlx_ptr;
+	void				*win_ptr;
+	t_img				coin;
+	t_image				player;
+	t_image				floor;
+	t_image				wall;
+}	t_data;
 int		ft_strlen(char *s);
 void	arg_check(int argc, char *argv[]);
 void	*open_window(void *mlx);
-int		handle_no_event(void *data);
+int		handle_no_event(t_data *data);
 int		handle_input(int keysym, t_data *data);
-void	map_check(char *mapfile);
+void	map_check(char *mapfile, struct s_map_data map_data);
 void	rectangle_check(struct s_map_data map_data);
 void	rectangle_check2(struct s_map_data map_data);
 void	border_check(struct s_map_data map_data);
 void	invalid_map(struct s_map_data map_data);
 int		ft_printf(const char *format, ...);
+void	map_init(struct s_map_data map_data);
+void	char_check(struct s_map_data map_data);
+void	char_count(struct s_map_data map_data);
 #endif

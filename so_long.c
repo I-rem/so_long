@@ -6,11 +6,19 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/10 13:01:18 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:11:37 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	map_init(struct s_map_data map_data)
+{
+	map_data.c_count = 0;
+	map_data.e_count = 0;
+	map_data.p_count = 0;
+	char_check(map_data);
+}
 
 void	arg_check(int argc, char *argv[])
 {
@@ -41,11 +49,10 @@ void	arg_check(int argc, char *argv[])
 	exit(EXIT_FAILURE);
 }
 
-void	map_check(char *mapfile)
+void	map_check(char *mapfile, struct	s_map_data map_data)
 {
 	int					fd;
 	char				*path;
-	struct s_map_data	map_data;
 	int					i;
 
 	path = ft_strjoin("maps/", mapfile);
@@ -66,7 +73,6 @@ void	map_check(char *mapfile)
 	}
 	close(fd);
 	rectangle_check (map_data);
-	border_check (map_data);
 }
 
 void	invalid_map(struct s_map_data map_data)
@@ -85,10 +91,10 @@ void	invalid_map(struct s_map_data map_data)
 
 int	main(int argc, char *argv[])
 {
-	t_data	data;
+	t_data				data;
 
 	arg_check(argc, argv);
-	map_check(argv[1]);
+	map_check(argv[1], data.map_data);
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (2);
@@ -98,6 +104,12 @@ int	main(int argc, char *argv[])
 		free(data.win_ptr);
 		return (2);
 	}
+	void    *img;
+    int w = 10;
+    int h = 10;
+    img = mlx_xpm_file_to_image(data.mlx_ptr, "texture/hero_basic.xpm", &w, &h);
+    mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img, 0, 0);
+	write(2, "test", 4);
 	mlx_key_hook(data.win_ptr, &handle_input, &data);
 	mlx_loop_hook(data.mlx_ptr, &handle_no_event, &data);
 	mlx_loop(data.mlx_ptr);
