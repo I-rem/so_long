@@ -1,7 +1,11 @@
 # so_long
 This project is a very small 2D game made for 42 coding school
 
-**Assets:** https://0x72.itch.io/16x16-dungeon-tileset
+**Assets:** 
+
+https://0x72.itch.io/16x16-dungeon-tileset
+
+https://limezu.itch.io/moderninteriors/devlog/187751/66th-update-doors
 ## Objectives
 
 It’s time for you to create a basic computer graphics project!
