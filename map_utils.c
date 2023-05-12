@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:21:18 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/11 12:23:45 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:33:16 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	border_check(t_data *data)
 		while (data->map_data.map[i][j] != '\n')
 		{
 			if ((i == 0 || j == 0 || i == data->map_data.rows
-					|| j == data->map_data.collumns - 1) && data->map_data.map[i][j] != '1')
+					|| j == data->map_data.collumns - 1)
+				&& data->map_data.map[i][j] != '1')
 				invalid_map(data);
 			j++;
 		}
@@ -87,8 +88,8 @@ void	char_check(t_data *data)
 	i = -1;
 	while (data->map_data.map[++i])
 	{
-		j = 0;
-		while (data->map_data.map[i][j] != '\n')
+		j = -1;
+		while (data->map_data.map[i][++j] != '\n')
 		{
 			if (data->map_data.map[i][j] == 'C')
 				data->map_data.c_count++;
@@ -100,9 +101,9 @@ void	char_check(t_data *data)
 				data->map_data.p_position_x = j;
 				data->map_data.p_position_y = i;
 			}
-			else if (data->map_data.map[i][j] != '1' && data->map_data.map[i][j] != '0')
+			else if (data->map_data.map[i][j] != '1'
+					&& data->map_data.map[i][j] != '0')
 				invalid_map(data);
-			j++;
 		}
 	}
 	char_count(data);
@@ -111,6 +112,6 @@ void	char_check(t_data *data)
 void	char_count(t_data *data)
 {
 	if (data->map_data.p_count != 1 || data->map_data.e_count != 1
-		   	|| data->map_data.c_count < 1)
+		|| data->map_data.c_count < 1)
 		invalid_map(data);
 }

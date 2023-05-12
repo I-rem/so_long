@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/11 12:23:07 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:59:02 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	map_init(t_data *data)
 {
+	(*data).move_count = 0;
 	data->map_data.c_count = 0;
 	data->map_data.e_count = 0;
 	data->map_data.p_count = 0;
@@ -98,7 +99,7 @@ int	main(int argc, char *argv[])
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (2);
-	data.win_ptr = open_window(data.mlx_ptr);
+	open_window(&data);
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
