@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:12:06 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 12:10:12 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:32:02 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	render_map(t_data *data)
 	int	j;
 
 	i = -1;
+	//write(1, "test", 4);
 	while (data->map_data.map[++i])
 	{
 		j = -1;

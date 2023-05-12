@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:57:59 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 12:05:45 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:15:22 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ struct s_map_data
 typedef struct s_data
 {
 	struct s_map_data	map_data;
+	struct s_map_data	map_data2;
 	void				*mlx_ptr;
 	void				*win_ptr;
 	int					move_count;
@@ -79,4 +80,5 @@ void	render_map(t_data *data);
 void	move(t_data *data, int x, int y);
 void	check_move(t_data *data, int keycode);
 int		close_program(t_data *data);
+void	flood_fill(t_data *data, int x, int y);
 #endif

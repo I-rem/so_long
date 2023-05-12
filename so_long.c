@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 11:59:02 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:28:48 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	arg_check(int argc, char *argv[])
 			}
 		}
 	}
-	write(2, "Wrong argument", 14);
+	write(2, "Error\nWrong argument", 20);
 	exit(EXIT_FAILURE);
 }
 
@@ -69,9 +69,11 @@ void	map_check(char *mapfile, t_data *data)
 	data->map_data.map[i] = get_next_line(fd);
 	while (data->map_data.map[i])
 	{
+		data->map_data2.map[i] = ft_strdup(data->map_data.map[i]);
 		i++;
 		data->map_data.map[i] = get_next_line(fd);
 	}
+	data->map_data2.map[i] = NULL;
 	close(fd);
 	rectangle_check (data);
 }
@@ -80,7 +82,8 @@ void	invalid_map(t_data *data)
 {
 	int	i;
 
-	i = 0;
+	i =	0;
+	(void) data;
 	while (data->map_data.map[i])
 	{
 		free(data->map_data.map[i]);

@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:05:53 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 11:53:47 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:30:57 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	img_init(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &handle_no_event, data);
 	mlx_loop(data->mlx_ptr);
 }
+
+//void	img_delete(t_data *data)
 
 void	check_move(t_data *data, int keycode)
 {

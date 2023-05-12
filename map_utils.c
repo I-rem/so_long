@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:21:18 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/11 13:33:16 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 13:33:05 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void	char_count(t_data *data)
 	if (data->map_data.p_count != 1 || data->map_data.e_count != 1
 		|| data->map_data.c_count < 1)
 		invalid_map(data);
+	flood_fill(data, data->map_data.p_position_x, data->map_data.p_position_y);
 }
