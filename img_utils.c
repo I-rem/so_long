@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 19:05:53 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 15:30:57 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:27:14 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@ void	img_init(t_data *data)
 	mlx_loop(data->mlx_ptr);
 }
 
-//void	img_delete(t_data *data)
+void	img_delete(t_data *data)
+{
+	mlx_destroy_image(data->mlx_ptr, data->coin.img_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->player.img_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->floor.img_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->wall.img_ptr);
+	mlx_destroy_image(data->mlx_ptr, data->exit.img_ptr);
+}
 
 void	check_move(t_data *data, int keycode)
 {

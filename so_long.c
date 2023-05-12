@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 16:40:04 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 15:28:48 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:38:17 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,14 @@ void	invalid_map(t_data *data)
 {
 	int	i;
 
-	i =	0;
-	(void) data;
+	i = 0;
 	while (data->map_data.map[i])
+	{
+		free(data->map_data.map[i]);
+		i++;
+	}
+	i = 0;
+	while (data->map_data2.map[i])
 	{
 		free(data->map_data.map[i]);
 		i++;
@@ -105,6 +110,7 @@ int	main(int argc, char *argv[])
 	open_window(&data);
 	if (data.win_ptr == NULL)
 	{
+		free(data.mlx_ptr);
 		free(data.win_ptr);
 		return (2);
 	}

@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 12:37:06 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 15:26:59 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:13:00 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	fill(t_data *data, int x, int y)
 {
-	if ((*data).map_data2.map[x][y] == '1' || x < 0 || y < 0 || (*data).map_data2.map[x][y] == 'x')
+	if ((*data).map_data2.map[x][y] == '1' || x < 0 ||
+		y < 0 || (*data).map_data2.map[x][y] == 'x')
 		return ;
 	(*data).map_data2.map[x][y] = 'x';
 	fill (data, x, y - 1);
@@ -27,10 +28,10 @@ void	flood_fill(t_data *data, int x, int y)
 {
 	int	i;
 	int	j;
-	
+
 	fill(data, y, x);
 	i = 0;
-	j = 0;	
+	j = 0;
 	while ((*data).map_data2.map[i])
 	{
 		while ((*data).map_data2.map[i][j] != '\n')

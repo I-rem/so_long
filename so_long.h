@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:57:59 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 14:15:22 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:04:51 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdarg.h>
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
 # define COIN "textures/chest_golden_open_full.xpm"
 # define EXIT "textures/Floor_ladder.xpm"
 # define PLAYER "textures/npc_paladin.xpm"
@@ -81,4 +81,5 @@ void	move(t_data *data, int x, int y);
 void	check_move(t_data *data, int keycode);
 int		close_program(t_data *data);
 void	flood_fill(t_data *data, int x, int y);
+void	img_delete(t_data *data);
 #endif

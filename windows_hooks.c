@@ -6,7 +6,7 @@
 /*   By: ikayacio <ikayacio@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 11:12:06 by ikayacio          #+#    #+#             */
-/*   Updated: 2023/05/12 15:32:02 by ikayacio         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:16:48 by ikayacio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	render_map(t_data *data)
 	int	j;
 
 	i = -1;
-	//write(1, "test", 4);
 	while (data->map_data.map[++i])
 	{
 		j = -1;
@@ -52,8 +51,7 @@ int	handle_input(int keycode, t_data *data)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(EXIT_SUCCESS);
+		close_program(data);
 	}
 	if (keycode == W || keycode == A
 		|| keycode == S || keycode == D)
@@ -64,11 +62,21 @@ int	handle_input(int keycode, t_data *data)
 	return (0);
 }
 
-// Destroy images, free memory
 int	close_program(t_data *data)
 {
+	int	i;
+
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	img_delete(data);
+	i = 0;
+	while (data->map_data.map[i] != NULL)
+	{
+		free(data->map_data.map[i]);
+		data->map_data.map[i] = NULL;
+		i++;
+	}
 	free(data->mlx_ptr);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
 void	open_window(t_data *data)
