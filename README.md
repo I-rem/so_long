@@ -110,15 +110,6 @@ an error.
 exit in a clean way, and return **"Error\n"** followed by an explicit error message of
 your choice.
 
-### Bonus Part
-You are allowed to use other functions to complete the bonus part as long as their
-use is **justified** during your evaluation
-
-You will get extra points if you:
-- Make the player lose when they touch an enemy patrol.
-- Add some sprite animation.
-- Display the movement count directly on screen instead of writing it in the shell.
-
 ## Evaluation
 
 ### Mandatory part
@@ -169,13 +160,6 @@ Execute the following tests, if at least one fails...
 
 #### Image usage
 - The program use mlx\_put\_image\_to\_window and not mlx put pixel
-
-### Bonus
-- Enemy patrols that cause the player to lose in case of contact
-- Draw calls
-  - There is some sprite animation
-  - You need to explain what it is and how you did it
-- The counter of movement is rendered on the screen using texture or mlx_put_string
 
 ## MiniLibX Guide
 https://qst0.github.io/ft_libgfx/man_mlx.html
