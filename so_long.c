@@ -62,7 +62,7 @@ void	map_check(char *mapfile, t_data *data)
 	if (fd < 0)
 	{
 		close(fd);
-		write(2, "Error\nInvalid file", 18);
+		write(2, "Error\nInvalid file\n", 19);
 		exit(EXIT_FAILURE);
 	}
 	i = 0;
@@ -86,15 +86,11 @@ void	invalid_map(t_data *data)
 	while (data->map_data.map[i])
 	{
 		free(data->map_data.map[i]);
+		data->map_data.map[i] = NULL;
 		i++;
 	}
 	i = 0;
-	while (data->map_data2.map[i])
-	{
-		free(data->map_data.map[i]);
-		i++;
-	}
-	write(2, "Error\nInvalid map", 17);
+	write(2, "Error\nInvalid map\n", 18);
 	exit (EXIT_FAILURE);
 }
 
